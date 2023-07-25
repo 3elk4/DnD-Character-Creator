@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converter\BonusConverter.cs" />
+    <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Converter\ModifierConverter.cs" />
     <Compile Include="Converter\PassiveWisdomConverter.cs" />
     <Compile Include="Converter\ProficiencyConverter.cs" />

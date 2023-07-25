@@ -25,7 +25,16 @@ namespace DndCharCreator.Converter
 
             int x = Int32.Parse(input);
 
-            var key = proficiencies.Keys.Single(choose => choose(x));
+            Func<int, bool> key;
+            try
+            {
+                key = proficiencies.Keys.Single(choose => choose(x));
+            }
+            catch (InvalidOperationException e)
+            {
+                return "";
+            }
+            
             return proficiencies[key];
         }
 
