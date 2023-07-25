@@ -4,9 +4,322 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DndCharCreator"
+        xmlns:localconv="clr-namespace:DndCharCreator.Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="700">
+
+    <Window.Resources>
+        <localconv:ModifierConverter x:Key="modifierConverter" />
+        <localconv:ProficiencyConverter x:Key="proficiencyConverter" />
+        <localconv:BonusConverter x:Key="bonusConverter" />
+        <localconv:PassiveWisdomConverter x:Key="passiveWisdomConverter" />
+    </Window.Resources>
     <Grid>
-        
+        <TabControl HorizontalAlignment="Left" Height="584" Margin="10,10,0,0" VerticalAlignment="Top" Width="672">
+            <TabItem Header="Info" Height="22" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <GroupBox Header="Abilities" HorizontalAlignment="Left" Height="224" VerticalAlignment="Top" Width="197" Margin="459,117,0,0">
+                        <Grid>
+                            <Label Content="Strength" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                            <Label Content="Dexterity" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                            <Label Content="Constitution" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+                            <Label Content="Intelligence" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,103,0,0" RenderTransformOrigin="0.479,-0.077"/>
+                            <Label Content="Wisdom" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0"/>
+                            <Label Content="Charisma" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0"/>
+                            <TextBox x:Name="constitution" HorizontalAlignment="Left" Height="23" Margin="90,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="11"/>
+                            <TextBox x:Name="dexterity" HorizontalAlignment="Left" Height="23" Margin="90,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
+                            <TextBox x:Name="strength" HorizontalAlignment="Left" Height="23" Margin="90,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
+                            <TextBox x:Name="wisdom" HorizontalAlignment="Left" Height="23" Margin="90,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="13"/>
+                            <TextBox x:Name="charisma" HorizontalAlignment="Left" Height="23" Margin="90,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="14"/>
+                            <TextBox x:Name="intelligence" HorizontalAlignment="Left" Height="23" Margin="90,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="12"/>
+                            <TextBox x:Name="str_mod" HorizontalAlignment="Left" Height="23" Margin="145,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=strength, Mode=OneWay}" />
+                            <TextBox x:Name="dex_mod" HorizontalAlignment="Left" Height="23" Margin="145,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=dexterity, Mode=OneWay}" />
+                            <TextBox x:Name="con_mod" HorizontalAlignment="Left" Height="23" Margin="145,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=constitution, Mode=OneWay}" />
+                            <TextBox x:Name="int_mod" HorizontalAlignment="Left" Height="23" Margin="145,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=intelligence, Mode=OneWay}" />
+                            <TextBox x:Name="wis_mod" HorizontalAlignment="Left" Height="23" Margin="145,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=wisdom, Mode=OneWay}" />
+                            <TextBox x:Name="cha_mod" HorizontalAlignment="Left" Height="23" Margin="145,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=charisma, Mode=OneWay}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Saving throws" HorizontalAlignment="Left" Height="194" Margin="459,346,0,0" VerticalAlignment="Top" Width="197">
+                        <Grid>
+                            <CheckBox x:Name="chkb_strength" Content="            Strength" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="str_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_strength" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_dexterity" Content="            Dexterity" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="dex_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_dexterity" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_constitution" Content="            Constitution" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="con_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_constitution" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_intelligence" Content="            Intelligence" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="int_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_intelligence" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_wisdom" Content="            Wisdom" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="wis_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_wisdom" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_charisma" Content="            Charisma" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="36,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                        <Binding ElementName="cha_mod" Path="Text"/>
+                                        <Binding ElementName="chkb_charisma" Path="IsChecked" />
+                                        <Binding ElementName="proficiency" Path="Text" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Skills" HorizontalAlignment="Left" Height="301" Margin="10,239,0,0" VerticalAlignment="Top" Width="444">
+                        <Grid>
+                            <CheckBox x:Name="chkb_perception" Content="            Perception (Wis)" HorizontalAlignment="Left" Margin="23,19,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_perc" HorizontalAlignment="Left" Height="20" Margin="49,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_perception" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_medicine" Content="            Medicine (Wis)" HorizontalAlignment="Left" Margin="23,94,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_med" HorizontalAlignment="Left" Height="20" Margin="49,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_medicine" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_insight" Content="            Insight (Wis)" HorizontalAlignment="Left" Margin="23,119,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_ins" HorizontalAlignment="Left" Height="20" Margin="49,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_insight" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_deception" Content="            Deception (Cha)" HorizontalAlignment="Left" Margin="251,174,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_dec" HorizontalAlignment="Left" Height="20" Margin="278,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="cha_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_deception" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_history" Content="            History (Int)" HorizontalAlignment="Left" Margin="251,69,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_his" HorizontalAlignment="Left" Height="20" Margin="277,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_history" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_nature" Content="            Nature (Int)" HorizontalAlignment="Left" Margin="251,119,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_nat" HorizontalAlignment="Left" Height="20" Margin="277,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_nature" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_persuation" Content="            Persuasion (Cha)" HorizontalAlignment="Left" Margin="251,249,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_pers" HorizontalAlignment="Left" Height="20" Margin="277,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="cha_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_persuation" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_investigation" Content="            Investigation (Int)" HorizontalAlignment="Left" Margin="251,94,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_inv" HorizontalAlignment="Left" Height="20" Margin="277,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_investigation" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_athletics" Content="            Athletics (Str)" HorizontalAlignment="Left" Margin="23,174,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_athl" HorizontalAlignment="Left" Height="20" Margin="49,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="str_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_athletics" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_performance" Content="            Performance (Cha)" HorizontalAlignment="Left" Margin="251,224,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_perform" HorizontalAlignment="Left" Height="20" Margin="277,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="cha_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_performance" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_survival" Content="            Survival (Wis)" HorizontalAlignment="Left" Margin="23,44,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_surv" HorizontalAlignment="Left" Height="20" Margin="49,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_survival" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_animal_handling" Content="            Animal Handling (Wis)" HorizontalAlignment="Left" Margin="23,69,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_ani_han" HorizontalAlignment="Left" Height="20" Margin="49,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_animal_handling" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_acrobatics" Content="            Acrobatics (Dex)" HorizontalAlignment="Left" Margin="23,199,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_acr" HorizontalAlignment="Left" Height="20" Margin="49,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="dex_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_acrobatics" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_religion" Content="            Religion (Int)" HorizontalAlignment="Left" Margin="251,44,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_rel" HorizontalAlignment="Left" Height="20" Margin="277,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_religion" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_arcana" Content="            Arcana (Int)" HorizontalAlignment="Left" Margin="251,19,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_arc" HorizontalAlignment="Left" Height="20" Margin="277,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_arcana" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_intimidation" Content="            Intimidation (Cha)" HorizontalAlignment="Left" Margin="251,199,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_int" HorizontalAlignment="Left" Height="20" Margin="277,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="cha_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_intimidation" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_stealth" Content="            Stealth (Dex)" HorizontalAlignment="Left" Margin="23,224,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_stel" HorizontalAlignment="Left" Height="20" Margin="49,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="dex_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_stealth" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <CheckBox x:Name="chkb_sleight_of_hand" Content="            Sleight of hand (Dex)" HorizontalAlignment="Left" Margin="23,249,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="skill_slohand" HorizontalAlignment="Left" Height="20" Margin="49,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="dex_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_sleight_of_hand" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
+                            </TextBox>
+                            <Separator HorizontalAlignment="Left" Height="30" Margin="10,133,0,0" VerticalAlignment="Top" Width="412"/>
+                            <Separator HorizontalAlignment="Left" Height="30" Margin="89,122,0,0" VerticalAlignment="Top" Width="262" RenderTransformOrigin="0.5,0.5">
+                                <Separator.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Separator.RenderTransform>
+                            </Separator>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Info" HorizontalAlignment="Left" Height="224" Margin="10,10,0,0" VerticalAlignment="Top" Width="444">
+                        <Grid>
+                            <Label Content="Armor Class" HorizontalAlignment="Left" Margin="257,69,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Initiative" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="257,128,0,0"/>
+                            <Label Content="Current HP" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="349,10,0,0"/>
+                            <Label Content="Temp HP" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="349,69,0,0"/>
+                            <Label Content="Proficiency" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Passive Perception" HorizontalAlignment="Left" Margin="123,69,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Hit dice" HorizontalAlignment="Left" Margin="349,128,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Inspiration" HorizontalAlignment="Left" Margin="124,128,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,41,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=dex_mod, Mode=OneWay}" VerticalAlignment="Top" Width="73" IsEnabled="False"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="349,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="349,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="349,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <Separator HorizontalAlignment="Left" Height="84" Margin="150,58,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
+                                <Separator.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Separator.RenderTransform>
+                            </Separator>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}">
+
+                            </TextBox>
+                            <TextBox x:Name="proficiency" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Text, Converter={StaticResource proficiencyConverter}, ElementName=lvl, Mode=OneWay}" IsEnabled="False"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="123,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <Separator HorizontalAlignment="Left" Height="84" Margin="18,59,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
+                                <Separator.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Separator.RenderTransform>
+                            </Separator>
+                            <Label Content="Level" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="lvl" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="1"/>
+                            <Label Content="Race" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Character" HorizontalAlignment="Left" Height="102" VerticalAlignment="Top" Width="197" Margin="459,10,0,0">
+                        <Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Combat">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
