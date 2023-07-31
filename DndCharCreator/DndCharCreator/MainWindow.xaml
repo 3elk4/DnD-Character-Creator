@@ -27,18 +27,18 @@
                             <Label Content="Intelligence" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,103,0,0" RenderTransformOrigin="0.479,-0.077"/>
                             <Label Content="Wisdom" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0"/>
                             <Label Content="Charisma" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0"/>
-                            <TextBox x:Name="constitution" HorizontalAlignment="Left" Height="23" Margin="90,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="11"/>
-                            <TextBox x:Name="dexterity" HorizontalAlignment="Left" Height="23" Margin="90,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
-                            <TextBox x:Name="strength" HorizontalAlignment="Left" Height="23" Margin="90,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
-                            <TextBox x:Name="wisdom" HorizontalAlignment="Left" Height="23" Margin="90,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="13"/>
-                            <TextBox x:Name="charisma" HorizontalAlignment="Left" Height="23" Margin="90,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="14"/>
-                            <TextBox x:Name="intelligence" HorizontalAlignment="Left" Height="23" Margin="90,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="12"/>
-                            <TextBox x:Name="str_mod" HorizontalAlignment="Left" Height="23" Margin="145,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=strength, Mode=OneWay}" />
-                            <TextBox x:Name="dex_mod" HorizontalAlignment="Left" Height="23" Margin="145,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=dexterity, Mode=OneWay}" />
-                            <TextBox x:Name="con_mod" HorizontalAlignment="Left" Height="23" Margin="145,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=constitution, Mode=OneWay}" />
-                            <TextBox x:Name="int_mod" HorizontalAlignment="Left" Height="23" Margin="145,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=intelligence, Mode=OneWay}" />
-                            <TextBox x:Name="wis_mod" HorizontalAlignment="Left" Height="23" Margin="145,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=wisdom, Mode=OneWay}" />
-                            <TextBox x:Name="cha_mod" HorizontalAlignment="Left" Height="23" Margin="145,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=charisma, Mode=OneWay}" />
+                            <TextBox x:Name="constitution" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="11"/>
+                            <TextBox x:Name="dexterity" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
+                            <TextBox x:Name="strength" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="10"/>
+                            <TextBox x:Name="wisdom" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="13"/>
+                            <TextBox x:Name="charisma" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="14"/>
+                            <TextBox x:Name="intelligence" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="90,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="12"/>
+                            <TextBox x:Name="str_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=strength, Mode=OneWay}" />
+                            <TextBox x:Name="dex_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=dexterity, Mode=OneWay}" />
+                            <TextBox x:Name="con_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25"  IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=constitution, Mode=OneWay}" />
+                            <TextBox x:Name="int_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=intelligence, Mode=OneWay}" />
+                            <TextBox x:Name="wis_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=wisdom, Mode=OneWay}" />
+                            <TextBox x:Name="cha_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=charisma, Mode=OneWay}" />
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Saving throws" HorizontalAlignment="Left" Height="194" Margin="459,370,0,0" VerticalAlignment="Top" Width="197">
@@ -108,7 +108,7 @@
                     <GroupBox Header="Skills" HorizontalAlignment="Left" Height="325" Margin="10,239,0,0" VerticalAlignment="Top" Width="444">
                         <Grid>
                             <CheckBox x:Name="chkb_perception" Content="            Perception (Wis)" HorizontalAlignment="Left" Margin="23,29,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_perc" HorizontalAlignment="Left" Height="20" Margin="49,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_perc" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
                                     <Binding ElementName="chkb_perception" Path="IsChecked" />
@@ -116,7 +116,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_medicine" Content="            Medicine (Wis)" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_med" HorizontalAlignment="Left" Height="20" Margin="49,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_med" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
                                     <Binding ElementName="chkb_medicine" Path="IsChecked" />
@@ -124,7 +124,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_insight" Content="            Insight (Wis)" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_ins" HorizontalAlignment="Left" Height="20" Margin="49,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
+                            <TextBox x:Name="skill_ins" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
                                     <Binding ElementName="chkb_insight" Path="IsChecked" />
@@ -132,7 +132,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_deception" Content="            Deception (Cha)" HorizontalAlignment="Left" Margin="251,184,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_dec" HorizontalAlignment="Left" Height="20" Margin="278,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
+                            <TextBox x:Name="skill_dec" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="278,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
                                     <Binding ElementName="chkb_deception" Path="IsChecked" />
@@ -140,7 +140,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_history" Content="            History (Int)" HorizontalAlignment="Left" Margin="251,79,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_his" HorizontalAlignment="Left" Height="20" Margin="277,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_his" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
                                     <Binding ElementName="chkb_history" Path="IsChecked" />
@@ -148,7 +148,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_nature" Content="            Nature (Int)" HorizontalAlignment="Left" Margin="251,129,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_nat" HorizontalAlignment="Left" Height="20" Margin="277,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_nat" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
                                     <Binding ElementName="chkb_nature" Path="IsChecked" />
@@ -156,7 +156,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_persuation" Content="            Persuasion (Cha)" HorizontalAlignment="Left" Margin="251,259,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_pers" HorizontalAlignment="Left" Height="20" Margin="277,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_pers" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
                                     <Binding ElementName="chkb_persuation" Path="IsChecked" />
@@ -164,7 +164,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_investigation" Content="            Investigation (Int)" HorizontalAlignment="Left" Margin="251,104,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_inv" HorizontalAlignment="Left" Height="20" Margin="277,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_inv" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
                                     <Binding ElementName="chkb_investigation" Path="IsChecked" />
@@ -172,7 +172,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_athletics" Content="            Athletics (Str)" HorizontalAlignment="Left" Margin="23,184,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_athl" HorizontalAlignment="Left" Height="20" Margin="49,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_athl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="str_mod" Path="Text"/>
                                     <Binding ElementName="chkb_athletics" Path="IsChecked" />
@@ -180,7 +180,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_performance" Content="            Performance (Cha)" HorizontalAlignment="Left" Margin="251,234,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_perform" HorizontalAlignment="Left" Height="20" Margin="277,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_perform" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
                                     <Binding ElementName="chkb_performance" Path="IsChecked" />
@@ -188,7 +188,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_survival" Content="            Survival (Wis)" HorizontalAlignment="Left" Margin="23,54,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_surv" HorizontalAlignment="Left" Height="20" Margin="49,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_surv" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
                                     <Binding ElementName="chkb_survival" Path="IsChecked" />
@@ -196,7 +196,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_animal_handling" Content="            Animal Handling (Wis)" HorizontalAlignment="Left" Margin="23,79,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_ani_han" HorizontalAlignment="Left" Height="20" Margin="49,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_ani_han" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
                                     <Binding ElementName="chkb_animal_handling" Path="IsChecked" />
@@ -204,7 +204,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_acrobatics" Content="            Acrobatics (Dex)" HorizontalAlignment="Left" Margin="23,209,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_acr" HorizontalAlignment="Left" Height="20" Margin="49,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_acr" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
                                     <Binding ElementName="chkb_acrobatics" Path="IsChecked" />
@@ -212,7 +212,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_religion" Content="            Religion (Int)" HorizontalAlignment="Left" Margin="251,54,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_rel" HorizontalAlignment="Left" Height="20" Margin="277,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_rel" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
                                     <Binding ElementName="chkb_religion" Path="IsChecked" />
@@ -220,7 +220,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_arcana" Content="            Arcana (Int)" HorizontalAlignment="Left" Margin="251,29,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_arc" HorizontalAlignment="Left" Height="20" Margin="277,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_arc" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
                                     <Binding ElementName="chkb_arcana" Path="IsChecked" />
@@ -228,7 +228,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_intimidation" Content="            Intimidation (Cha)" HorizontalAlignment="Left" Margin="251,209,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_int" HorizontalAlignment="Left" Height="20" Margin="277,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_int" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="277,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
                                     <Binding ElementName="chkb_intimidation" Path="IsChecked" />
@@ -236,7 +236,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_stealth" Content="            Stealth (Dex)" HorizontalAlignment="Left" Margin="23,234,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_stel" HorizontalAlignment="Left" Height="20" Margin="49,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_stel" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
                                     <Binding ElementName="chkb_stealth" Path="IsChecked" />
@@ -244,7 +244,7 @@
                                 </MultiBinding>
                             </TextBox>
                             <CheckBox x:Name="chkb_sleight_of_hand" Content="            Sleight of hand (Dex)" HorizontalAlignment="Left" Margin="23,259,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="skill_slohand" HorizontalAlignment="Left" Height="20" Margin="49,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
+                            <TextBox x:Name="skill_slohand" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="20" Margin="49,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
                                     <Binding ElementName="chkb_sleight_of_hand" Path="IsChecked" />
@@ -275,11 +275,11 @@
                             <Label Content="Passive Perception" HorizontalAlignment="Left" Margin="123,69,0,0" VerticalAlignment="Top"/>
                             <Label Content="Hit dice" HorizontalAlignment="Left" Margin="349,128,0,0" VerticalAlignment="Top"/>
                             <Label Content="Inspiration" HorizontalAlignment="Left" Margin="124,128,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,41,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=dex_mod, Mode=OneWay}" VerticalAlignment="Top" Width="73" IsEnabled="False"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="257,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="349,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="349,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,41,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=dex_mod, Mode=OneWay}" VerticalAlignment="Top" Width="73" IsEnabled="False"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="349,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
                             <Separator HorizontalAlignment="Left" Height="84" Margin="150,58,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
                                 <Separator.RenderTransform>
@@ -291,10 +291,10 @@
                                     </TransformGroup>
                                 </Separator.RenderTransform>
                             </Separator>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}">
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}">
                             </TextBox>
-                            <TextBox x:Name="proficiency" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Text, Converter={StaticResource proficiencyConverter}, ElementName=lvl, Mode=OneWay}" IsEnabled="False"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="123,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <TextBox x:Name="proficiency" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Text, Converter={StaticResource proficiencyConverter}, ElementName=lvl, Mode=OneWay}" IsEnabled="False"/>
+                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="123,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
                             <Separator HorizontalAlignment="Left" Height="84" Margin="18,59,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
                                 <Separator.RenderTransform>
                                     <TransformGroup>
@@ -317,10 +317,10 @@
                         <Grid>
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-                            <TextBox x:Name="lvl1" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="1"/>
-                            <TextBox x:Name="lvl2" HorizontalAlignment="Left" Height="23" Margin="140,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
+                            <TextBox x:Name="lvl1" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="1"/>
+                            <TextBox x:Name="lvl2" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="140,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-                            <TextBox x:Name="lvl3" HorizontalAlignment="Left" Height="23" Margin="140,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
+                            <TextBox x:Name="lvl3" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="140,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -334,7 +334,7 @@
             <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
             <Label Content="Level" HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="lvl" HorizontalAlignment="Left" Height="23" Margin="589,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73">
+            <TextBox x:Name="lvl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="589,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73">
                 <MultiBinding Converter="{StaticResource lvlConverter}" Mode="OneWay">
                     <Binding ElementName="lvl1" Path="Text" />
                     <Binding ElementName="lvl2" Path="Text" />
