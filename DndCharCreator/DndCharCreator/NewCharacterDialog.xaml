@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DndCharCreator"
         xmlns:validationRules="clr-namespace:DndCharCreator.Validation"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="NewCharacterDialog" Height="110" Width="400">
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
