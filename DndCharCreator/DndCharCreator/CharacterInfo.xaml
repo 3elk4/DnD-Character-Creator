@@ -300,7 +300,6 @@
                             <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}">
                             </TextBox>
                             <TextBox x:Name="proficiency" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Text, Converter={StaticResource proficiencyConverter}, ElementName=lvl, Mode=OneWay}" IsEnabled="False"/>
-                            <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="123,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
                             <Separator HorizontalAlignment="Left" Height="84" Margin="18,59,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
                                 <Separator.RenderTransform>
                                     <TransformGroup>
@@ -317,6 +316,14 @@
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
                             <Label Content="Alignment" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
                             <TextBox HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
+                            <CheckBox Content="" HorizontalAlignment="Left" Margin="130,163,0,0" VerticalAlignment="Top" Height="15" Width="18" RenderTransformOrigin="0.5,0.5">
+                                <CheckBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    </TransformGroup>
+                                </CheckBox.RenderTransform>
+
+                            </CheckBox>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Classes" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="197" Margin="459,10,0,0">
@@ -387,7 +394,7 @@
             <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="charName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
             <Label Content="Level" HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="lvl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="589,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73">
+            <TextBox x:Name="lvl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="589,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False">
                 <MultiBinding Converter="{StaticResource lvlConverter}" Mode="OneWay">
                     <Binding ElementName="lvl1" Path="Text" />
                     <Binding ElementName="lvl2" Path="Text" />
