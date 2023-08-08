@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using System.Xml;
+using Microsoft.Win32;
 
 namespace DndCharCreator
 {
@@ -53,6 +54,23 @@ namespace DndCharCreator
 
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void BrowseCharacterImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = "c:\\";
+            dlg.Filter = "(*.jpg)|*.jpg|(*.png)|*.png";
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == true)
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(dlg.FileName);
+                bitmap.EndInit();
+                character_image.Source = bitmap;
+            }
         }
     }
     
