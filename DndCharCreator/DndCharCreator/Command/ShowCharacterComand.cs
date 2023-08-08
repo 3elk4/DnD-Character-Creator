@@ -26,11 +26,11 @@ namespace DndCharCreator.Command
             var path = parameter as XmlAttribute;
             
             CharacterInfo window = new CharacterInfo(path.Value);
-            window.Show();
 
             if (!mainWindowsClosed)
             {
                 WindowHelper.SwapWindows(window);
+                window.Show();
                 mainWindowsClosed = true;
             }
         }

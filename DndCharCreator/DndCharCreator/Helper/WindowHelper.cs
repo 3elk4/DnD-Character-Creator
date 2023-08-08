@@ -11,7 +11,10 @@ namespace DndCharCreator.Helper
     {
         public static void SwapWindows(Window window)
         {
-            App.Current.MainWindow.Close();
+            var mainWindow = App.Current.MainWindow;
+            window.Top = mainWindow.Top;
+            window.Left = mainWindow.Left; 
+            mainWindow.Close();
             App.Current.MainWindow = window;
         }
     }

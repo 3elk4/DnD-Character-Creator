@@ -21,11 +21,11 @@ namespace DndCharCreator.Command
         public void Execute(object parameter)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-
+          
             if (!mainWindowsClosed)
             {
                 WindowHelper.SwapWindows(mainWindow);
+                mainWindow.Show();
                 mainWindowsClosed = true;
             }
         }
