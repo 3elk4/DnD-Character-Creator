@@ -351,9 +351,9 @@
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="166,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="166,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <TextBox HorizontalAlignment="Left" Height="145" Margin="166,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" VerticalScrollBarVisibility="Visible"/>
-                            <Button Content="Browse" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="113"/>
-                            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="113">
-                                <Image/>
+                            <Button Content="Browse" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="113" Click="BrowseCharacterImage_Click"/>
+                            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="113">
+                                <Image x:Name="character_image"/>
                             </Border>
                         </Grid>
                     </GroupBox>
