@@ -17,7 +17,6 @@
         <localconv:PassiveWisdomConverter x:Key="passiveWisdomConverter" />
         <localconv:LvlConverter x:Key="lvlConverter" />
         <localCommand:ShowMainWindowCommand x:Key="showMainWindowCommand"/>
-        <localCommand:SaveToFileCommand x:Key="saveToFileCommand"/>
     </Window.Resources>
     <Grid>
 
@@ -350,6 +349,6 @@
                 </MultiBinding>
             </TextBox>
         </Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="25" Margin="582,736,0,0" Content="Save to file" Command="{Binding Mode=OneWay, Source={StaticResource saveToFileCommand}}" />
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="25" Margin="582,736,0,0" Content="Save to file" />
     </Grid>
 </Window>
