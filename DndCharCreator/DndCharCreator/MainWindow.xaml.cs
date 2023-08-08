@@ -10,9 +10,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace DndCharCreator
 {
@@ -26,14 +25,16 @@ namespace DndCharCreator
             InitializeComponent();
         }
 
-
-        private void NumberValidation(object sender, TextCompositionEventArgs e)
+        private void AddNewCharacter(object sender, RoutedEventArgs e)
         {
-            if (e.Text.Length == 0) return;
+            NewCharacterDialog modalWindow = new NewCharacterDialog();
+            Visibility = Visibility = Visibility.Hidden;
+            modalWindow.ShowDialog();
+            Visibility = Visibility = Visibility.Visible;
 
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            XmlDataProvider xmlDataProvider = (XmlDataProvider)this.FindResource("Characters");
+            xmlDataProvider.Refresh();
+
         }
     }
-    
 }

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Characters>
+  <Character Name="Bob" Level="1" Path="\Data\Bob_character.xml" />
+</Characters>
