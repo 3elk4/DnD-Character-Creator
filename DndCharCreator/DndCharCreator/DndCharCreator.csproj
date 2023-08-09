@@ -60,6 +60,7 @@
     <Compile Include="Command\ShowCharacterComand.cs" />
     <Compile Include="Command\ShowMainWindowCommand.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
+    <Compile Include="Model\DnDClass.cs" />
     <Compile Include="Validation\NotEmptyTextRule.cs" />
     <Page Include="CharacterInfo.xaml">
       <Generator>MSBuild:Compile</Generator>

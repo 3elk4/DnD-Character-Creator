@@ -15,14 +15,19 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Microsoft.Win32;
+using System.Collections.ObjectModel;
+using DndCharCreator.Model;
 
 namespace DndCharCreator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class CharacterInfo : Window
     {
+        ObservableCollection<DnDClass> DndClasses { get; set; }
+
         private string filepath = null;
         public CharacterInfo(string path)
         {   
@@ -30,6 +35,10 @@ namespace DndCharCreator
             //this.DataContext = this;
             UploadDetails(path);
             this.filepath = path;
+
+            DndClasses = new ObservableCollection<DnDClass>();
+            DndClasses.Add(new DnDClass());
+            dndClasses.ItemsSource = DndClasses;
         }
 
         public string Filepath()
@@ -71,6 +80,18 @@ namespace DndCharCreator
                 bitmap.EndInit();
                 character_image.Source = bitmap;
             }
+        }
+
+        private void OnAddNewDndClass(object sender, RoutedEventArgs e)
+        {
+            if (DndClasses.Count == 4) return;
+            DndClasses.Add(new DnDClass());
+        }
+
+        private void OnDeleteDndClass(object sender, RoutedEventArgs e)
+        {
+            if (DndClasses.Count == 1) return;
+            DndClasses.Remove((sender as FrameworkElement).DataContext as DnDClass);
         }
     }
     

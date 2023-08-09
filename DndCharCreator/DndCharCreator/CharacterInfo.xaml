@@ -327,14 +327,25 @@
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Classes" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="197" Margin="459,10,0,0">
-                        <Grid>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-                            <TextBox x:Name="lvl1" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="1"/>
-                            <TextBox x:Name="lvl2" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="140,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-                            <TextBox x:Name="lvl3" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="140,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="0"/>
-                        </Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <ItemsControl Name="dndClasses">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Grid Height="70">
+                                                    <TextBox Height="23" Width="110" Text="{Binding Name}" Margin="10,10,65,37"/>
+                                                    <TextBox Height="23" Width="110" Text="{Binding SubclassName}" Margin="10,38,65,9"/>
+                                                    <TextBox PreviewTextInput="NumberValidation" Height="23" Width="30" Text="{Binding Lvl}" Margin="125,10,30,37"/>
+                                                    <Button Height="23" Width="30" Click="OnDeleteDndClass" FontFamily="Marlett" FontSize="16" Content="r" Margin="125,37,30,10" />
+                                                </Grid>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Button FontFamily="Marlett" FontSize="20" Content="6" HorizontalAlignment="Left" Click="OnAddNewDndClass" Margin="10, 0, 0, 0" />
+                            </StackPanel>
+                        </ScrollViewer>
                     </GroupBox>
                 </Grid>
             </TabItem>
@@ -395,11 +406,12 @@
             <TextBox x:Name="charName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
             <Label Content="Level" HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="lvl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="589,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False">
-                <MultiBinding Converter="{StaticResource lvlConverter}" Mode="OneWay">
+                <!--<MultiBinding Converter="{StaticResource lvlConverter}" Mode="OneWay">
                     <Binding ElementName="lvl1" Path="Text" />
                     <Binding ElementName="lvl2" Path="Text" />
                     <Binding ElementName="lvl3" Path="Text" />
-                </MultiBinding>
+                    <Binding ElementName="lvl4" Path="Text" />
+                </MultiBinding>-->
             </TextBox>
         </Grid>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="25" Margin="582,736,0,0" Content="Save to file" />
