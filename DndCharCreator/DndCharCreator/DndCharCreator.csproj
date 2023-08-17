@@ -61,7 +61,6 @@
     <Compile Include="Command\ShowMainWindowCommand.cs" />
     <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
-    <Compile Include="Model\DnDClass.cs" />
     <Compile Include="Validation\NotEmptyTextRule.cs" />
     <Page Include="CharacterInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
