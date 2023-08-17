@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\ShowCharacterComand.cs" />
     <Compile Include="Command\ShowMainWindowCommand.cs" />
+    <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
     <Compile Include="Model\DnDClass.cs" />
     <Compile Include="Validation\NotEmptyTextRule.cs" />
@@ -71,7 +72,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converter\BonusConverter.cs" />
-    <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Converter\ModifierConverter.cs" />
     <Compile Include="Converter\PassiveWisdomConverter.cs" />
     <Compile Include="Converter\ProficiencyConverter.cs" />
