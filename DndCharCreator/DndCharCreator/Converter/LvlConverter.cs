@@ -16,6 +16,7 @@ namespace DndCharCreator.Converter
             if (((string)values[0]).Length != 0) result += Int32.Parse((string)values[0]);
             if (((string)values[1]).Length != 0) result += Int32.Parse((string)values[1]);
             if (((string)values[2]).Length != 0) result += Int32.Parse((string)values[2]);
+            if (((string)values[3]).Length != 0) result += Int32.Parse((string)values[3]);
 
             return result.ToString();
         }

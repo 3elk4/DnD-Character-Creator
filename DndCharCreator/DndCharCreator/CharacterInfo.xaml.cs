@@ -1,35 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Microsoft.Win32;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DndCharCreator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class CharacterInfo : Window
     {
         private string filepath = null;
         public CharacterInfo(string path)
-        {   
+        {
             InitializeComponent();
-            //this.DataContext = this;
             UploadDetails(path);
             this.filepath = path;
+
+            IEnumerable<int> range = Enumerable.Range(0, 20);
+            lvl1.ItemsSource = range;
+            lvl2.ItemsSource = range;
+            lvl3.ItemsSource = range;
+            lvl4.ItemsSource = range;
+
+            range = Enumerable.Range(1, 20);
+            strength.ItemsSource = range;
+            dexterity.ItemsSource = range;
+            constitution.ItemsSource = range;
+            intelligence.ItemsSource = range;
+            wisdom.ItemsSource = range;
+            charisma.ItemsSource = range;
         }
 
         public string Filepath()
@@ -73,5 +79,4 @@ namespace DndCharCreator
             }
         }
     }
-    
 }
