@@ -1,6 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Character>
+<CharacterDetails>
   <Name></Name>
-  <Level></Level>
-</Character>
+  <Info>
+    <Race></Race>
+    <Background></Background>
+    <Alignment></Alignment>
+    <Inspiration></Inspiration>
+    <AC></AC>
+    <Speed></Speed>
+    <HP></HP>
+    <CurrentHP></CurrentHP>
+    <TempHP></TempHP>
+    <HitDice></HitDice>
+    <DndClasses>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>1</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+    </DndClasses>
+    <Abilities>
+      <Strength></Strength>
+      <Dexterity></Dexterity>
+      <Constitution></Constitution>
+      <Intelligence></Intelligence>
+      <Wisdom></Wisdom>
+      <Charisma></Charisma>
+    </Abilities>
+    <SavingThrows>
+      <Strength>False</Strength>
+      <Dexterity>False</Dexterity>
+      <Constitution>False</Constitution>
+      <Intelligence>False</Intelligence>
+      <Wisdom>False</Wisdom>
+      <Charisma>False</Charisma>
+    </SavingThrows>
+    <Skills>
+      <Perception>False</Perception>
+      <Survival>False</Survival>
+      <AnimalHandling>False</AnimalHandling>
+      <Medicine>False</Medicine>
+      <Insight>False</Insight>
+      <Arcana>False</Arcana>
+      <Religion>False</Religion>
+      <History>False</History>
+      <Investigation>False</Investigation>
+      <Nature>False</Nature>
+      <Athletics>False</Athletics>
+      <Acrobatics>False</Acrobatics>
+      <Stealth>False</Stealth>
+      <SleightOfHand>False</SleightOfHand>
+      <Deception>False</Deception>
+      <Intimidation>False</Intimidation>
+      <Performance>False</Performance>
+      <Persuasion>False</Persuasion>
+    </Skills>
+  </Info>
+
+  <Bio>
+    <Age></Age>
+    <Size></Size>
+    <Weight></Weight>
+    <Height></Height>
+    <Skin></Skin>
+    <Eyes></Eyes>
+    <Hair></Hair>
+    <RepresentantiveFeatures></RepresentantiveFeatures>
+    <Traits></Traits>
+    <Flaws></Flaws>
+    <Bonds></Bonds>
+    <Ideals></Ideals>
+    <Allies></Allies>
+    <Backstory></Backstory>
+  </Bio>
+</CharacterDetails>
