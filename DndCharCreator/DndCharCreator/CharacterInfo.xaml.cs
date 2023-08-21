@@ -60,10 +60,19 @@ namespace DndCharCreator
 
         private void SaveDetails(object sender, RoutedEventArgs e)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(CharacterDetails));
-            TextWriter writer = new StreamWriter(Environment.CurrentDirectory + filepath);
-            serializer.Serialize(writer, details);
-            writer.Close();
+            
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(CharacterDetails));
+                TextWriter writer = new StreamWriter(Environment.CurrentDirectory + filepath);
+                serializer.Serialize(writer, details);
+                writer.Close();
+                saveErrorTextBlock.Text = "Data saved successfully!";
+            }
+            catch(Exception)
+            {
+                saveErrorTextBlock.Text = "Error occured while saving file!";
+            }
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
