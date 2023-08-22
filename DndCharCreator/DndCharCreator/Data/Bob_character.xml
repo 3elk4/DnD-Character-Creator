@@ -1,6 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Character>
+<CharacterDetails>
   <Name>Bob</Name>
-  <Level>1</Level>
-</Character>
+  <Info>
+    <Race>Dwarf</Race>
+    <Background>Entertainer</Background>
+    <Alignment>Chaotic good</Alignment>
+    <Inspiration>False</Inspiration>
+    <AC>15</AC>
+    <Speed>25</Speed>
+    <HP>15</HP>
+    <CurrentHP>15</CurrentHP>
+    <TempHP>0</TempHP>
+    <HitDice>d8</HitDice>
+    <DndClasses>
+      <DndClass>
+        <Name>Bard</Name>
+        <Subname>College of Lore</Subname>
+        <Lvl>3</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+      <DndClass>
+        <Name></Name>
+        <Subname></Subname>
+        <Lvl>0</Lvl>
+      </DndClass>
+    </DndClasses>
+    <Abilities>
+      <Strength>14</Strength>
+      <Dexterity>10</Dexterity>
+      <Constitution>13</Constitution>
+      <Intelligence>12</Intelligence>
+      <Wisdom>13</Wisdom>
+      <Charisma>15</Charisma>
+    </Abilities>
+    <SavingThrows>
+      <Strength>False</Strength>
+      <Dexterity>True</Dexterity>
+      <Constitution>False</Constitution>
+      <Intelligence>False</Intelligence>
+      <Wisdom>False</Wisdom>
+      <Charisma>True</Charisma>
+    </SavingThrows>
+    <Skills>
+      <Perception>True</Perception>
+      <Survival>False</Survival>
+      <AnimalHandling>False</AnimalHandling>
+      <Medicine>False</Medicine>
+      <Insight>True</Insight>
+      <Arcana>False</Arcana>
+      <Religion>False</Religion>
+      <History>False</History>
+      <Investigation>False</Investigation>
+      <Nature>False</Nature>
+      <Athletics>False</Athletics>
+      <Acrobatics>True</Acrobatics>
+      <Stealth>False</Stealth>
+      <SleightOfHand>False</SleightOfHand>
+      <Deception>False</Deception>
+      <Intimidation>False</Intimidation>
+      <Performance>True</Performance>
+      <Persuasion>False</Persuasion>
+    </Skills>
+  </Info>
+
+  <Bio>
+    <Age></Age>
+    <Size></Size>
+    <Weight></Weight>
+    <Height></Height>
+    <Skin></Skin>
+    <Eyes></Eyes>
+    <Hair></Hair>
+    <RepresentantiveFeatures></RepresentantiveFeatures>
+    <Traits></Traits>
+    <Flaws></Flaws>
+    <Bonds></Bonds>
+    <Ideals></Ideals>
+    <Allies></Allies>
+    <Backstory></Backstory>
+  </Bio>
+</CharacterDetails>

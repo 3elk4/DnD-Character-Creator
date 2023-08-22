@@ -7,6 +7,9 @@ using System.Xml;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
+using DndCharCreator.XmlModel;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace DndCharCreator
 {
@@ -17,11 +20,14 @@ namespace DndCharCreator
     public partial class CharacterInfo : Window
     {
         private string filepath = null;
+        public CharacterDetails details { get; set; }
+
         public CharacterInfo(string path)
         {
             InitializeComponent();
             UploadDetails(path);
             this.filepath = path;
+            this.DataContext = details;
 
             IEnumerable<int> range = Enumerable.Range(0, 20);
             lvl1.ItemsSource = range;
@@ -45,13 +51,28 @@ namespace DndCharCreator
 
         private void UploadDetails(string path)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Environment.CurrentDirectory + path);
+            XmlSerializer serializer = new XmlSerializer(typeof(CharacterDetails));
+            using (Stream reader = new FileStream(Environment.CurrentDirectory + path, FileMode.Open))
+            {
+                details = (CharacterDetails)serializer.Deserialize(reader);
+            }
+        }
 
-            var character = doc.SelectSingleNode("Character");
-            charName.Text = character.SelectSingleNode("Name").InnerText;
-
-            doc = null;
+        private void SaveDetails(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(CharacterDetails));
+                TextWriter writer = new StreamWriter(Environment.CurrentDirectory + filepath);
+                serializer.Serialize(writer, details);
+                writer.Close();
+                saveErrorTextBlock.Text = "Data saved successfully!";
+            }
+            catch(Exception)
+            {
+                saveErrorTextBlock.Text = "Error occured while saving file!";
+            }
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)

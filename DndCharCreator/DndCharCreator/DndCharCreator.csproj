@@ -61,7 +61,14 @@
     <Compile Include="Command\ShowMainWindowCommand.cs" />
     <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
+    <Compile Include="XmlModel\Abilities.cs" />
+    <Compile Include="XmlModel\Bio.cs" />
+    <Compile Include="XmlModel\CharacterDetails.cs" />
+    <Compile Include="XmlModel\DndClass.cs" />
+    <Compile Include="XmlModel\Info.cs" />
     <Compile Include="Validation\NotEmptyTextRule.cs" />
+    <Compile Include="XmlModel\SavingThrows.cs" />
+    <Compile Include="XmlModel\Skills.cs" />
     <Page Include="CharacterInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
