@@ -61,6 +61,7 @@
     <Compile Include="Command\ShowMainWindowCommand.cs" />
     <Compile Include="Converter\LvlConverter.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
+    <Compile Include="Model\Item.cs" />
     <Compile Include="XmlModel\Abilities.cs" />
     <Compile Include="XmlModel\Bio.cs" />
     <Compile Include="XmlModel\CharacterDetails.cs" />

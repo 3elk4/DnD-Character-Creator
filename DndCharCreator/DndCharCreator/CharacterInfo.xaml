@@ -389,6 +389,89 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Items">
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox Header="Money" HorizontalAlignment="Left" Height="71" Margin="10,10,0,0" VerticalAlignment="Top" Width="646">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label Content="GP" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="3" Width="25"/>
+                            <Label Content="EP" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="2" Width="23"/>
+                            <Label Content="SP" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0"/>
+                            <Label Content="PP" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="4" Width="23"/>
+                            <Label Content="CP" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox x:Name="ep" HorizontalAlignment="Left" Height="23" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
+                            <TextBox x:Name="gp" HorizontalAlignment="Left" Height="23" Margin="40,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Grid.Column="3"/>
+                            <TextBox x:Name="pp" HorizontalAlignment="Left" Height="23" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Grid.Column="4"/>
+                            <TextBox x:Name="sp" HorizontalAlignment="Left" Height="23" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
+                            <TextBox x:Name="cp" HorizontalAlignment="Left" Height="23" Margin="39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"  Grid.Column="0" Grid.Row="0"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Items" HorizontalAlignment="Left" Height="478" Margin="10,86,0,0" VerticalAlignment="Top" Width="646">
+                        <Grid>
+                            <Grid Height="26" Margin="0,5,0,424">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="380"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="1" Content="Quantity" HorizontalAlignment="Left"/>
+                                <Label Grid.Column="2" Content="Item name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                <Label Grid.Column="3" Content="Weight" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </Grid>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,36,0,40">
+                                <ItemsControl Name="characterItems">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Grid Height="23" Margin="0, 0, 0, 5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50"/>
+                                                        <ColumnDefinition Width="50"/>
+                                                        <ColumnDefinition Width="390"/>
+                                                        <ColumnDefinition Width="50"/>
+                                                        <ColumnDefinition Width="50"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                    </Grid.RowDefinitions>
+                                                    <CheckBox x:Name="exists" Grid.Column="0" Margin="20, 0, 0, 0" IsChecked="{Binding Exists}">
+                                                        <CheckBox.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                                            </TransformGroup>
+                                                        </CheckBox.RenderTransform>
+                                                    </CheckBox>
+                                                    <TextBox x:Name="quantity" Grid.Column="1" Text="{Binding Quantity}" IsEnabled="{Binding Exists}"/>
+                                                    <TextBox x:Name="itemName" Grid.Column="2" Margin="10,0" Text="{Binding Name}" IsEnabled="{Binding Exists}"/>
+                                                    <TextBox x:Name="itemWeight" Grid.Column="3" Text="{Binding Weight}" GotFocus="WeightGotFocus" TextChanged="WeightTextChanged" IsEnabled="{Binding Exists}"/>
+                                                    <Button Grid.Column="4" FontFamily="Marlett"  Content="r" Width="23" Margin="10,0,17,0" Click="DeleteItem"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <Button FontFamily="Marlett" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="25" FontSize="20" Content="6" Margin="10,420,0,0" Click="AddItem" />
+                            <Label Content="Total Weight:" HorizontalAlignment="Left" Margin="472,417,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="totalWeight" HorizontalAlignment="Left" Height="23" Margin="556,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" IsEnabled="False" Text="0"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <TabItem Header="Combat">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>

@@ -10,6 +10,9 @@ using System.Linq;
 using DndCharCreator.XmlModel;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.ObjectModel;
+using DndCharCreator.Model;
+using System.Windows.Controls;
 
 namespace DndCharCreator
 {
@@ -21,6 +24,9 @@ namespace DndCharCreator
     {
         private string filepath = null;
         public CharacterDetails details { get; set; }
+
+        public ObservableCollection<Item> Items { get; set; }
+        string OldWeight = string.Empty;
 
         public CharacterInfo(string path)
         {
@@ -42,6 +48,10 @@ namespace DndCharCreator
             intelligence.ItemsSource = range;
             wisdom.ItemsSource = range;
             charisma.ItemsSource = range;
+
+            Items = new ObservableCollection<Item>();
+            Items.Add(new Item());
+            characterItems.ItemsSource = Items;
         }
 
         public string Filepath()
@@ -98,6 +108,36 @@ namespace DndCharCreator
                 bitmap.EndInit();
                 character_image.Source = bitmap;
             }
+        }
+
+        private void DeleteItem(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext as Item;
+            totalWeight.Text = (Int32.Parse(totalWeight.Text) - item.Weight).ToString();
+            Items.Remove(item);
+        }
+
+        private void AddItem(object sender, RoutedEventArgs e)
+        {
+            Items.Add(new Item());
+        }
+
+        private void WeightGotFocus(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text.Length == 0) return;
+            OldWeight = ((TextBox)sender).Text;
+        }
+
+        private void WeightTextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text.Length == 0) return;
+
+            int newValue = Int32.Parse(((TextBox)sender).Text);
+            int oldValue = Int32.Parse(OldWeight);
+            var act = Int32.Parse(totalWeight.Text);
+
+            totalWeight.Text = (act - oldValue + newValue).ToString();
+            OldWeight = ((TextBox)sender).Text;
         }
     }
 }
