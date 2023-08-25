@@ -27,6 +27,7 @@ namespace DndCharCreator
 
         public ObservableCollection<Item> Items { get; set; }
         public ObservableCollection<Feat> Feats { get; set; }
+        public ObservableCollection<Proficiency> Proficiencies { get; set; }
 
         string OldWeight = string.Empty;
 
@@ -58,6 +59,10 @@ namespace DndCharCreator
             Feats = new ObservableCollection<Feat>();
             Feats.Add(new Feat());
             feats.ItemsSource = Feats;
+
+            Proficiencies = new ObservableCollection<Proficiency>();
+            Proficiencies.Add(new Proficiency());
+            proficiencies.ItemsSource = Proficiencies;
         }
 
         public string Filepath()
@@ -139,6 +144,16 @@ namespace DndCharCreator
             Feats.Add(new Feat());
         }
 
+        private void DeleteProficiency(object sender, RoutedEventArgs e)
+        {
+            var proficiency = (sender as FrameworkElement).DataContext as Proficiency;
+            Proficiencies.Remove(proficiency);
+        }
+
+        private void AddProficiency(object sender, RoutedEventArgs e)
+        {
+            Proficiencies.Add(new Proficiency());
+        }
         private void WeightGotFocus(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text.Length == 0) return;
