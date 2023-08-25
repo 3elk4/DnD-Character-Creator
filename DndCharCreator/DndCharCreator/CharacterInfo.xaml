@@ -343,50 +343,42 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Bio" >
+            <TabItem Header="Feats">
                 <Grid Background="#FFE5E5E5">
-                    <GroupBox Header="Appearance" HorizontalAlignment="Left" Height="312" Margin="10,10,0,0" VerticalAlignment="Top" Width="309">
-                        <Grid>
-                            <Label Content="Age" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Height" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Weight" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Eyes" HorizontalAlignment="Left" Margin="128,41,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Skin" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Hair" HorizontalAlignment="Left" Margin="128,72,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Representative features" HorizontalAlignment="Left" Margin="128,103,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Age, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="Size" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Size, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Height, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Weight, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Skin, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Hair, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Eyes, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="145" Margin="166,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.RepresentantiveFeatures, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Button Content="Browse" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="113" Click="BrowseCharacterImage_Click"/>
-                            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="113">
-                                <Image x:Name="character_image"/>
-                            </Border>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Personality" HorizontalAlignment="Left" Height="312" Margin="324,10,0,0" VerticalAlignment="Top" Width="332">
-                        <Grid>
-                            <Label Content="Traits" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Ideals" HorizontalAlignment="Left" Margin="165,101,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Bonds" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Flaws" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Allies &amp; Organizations" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Traits, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Flaws, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Bonds, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Ideals, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Allies, UpdateSourceTrigger=PropertyChanged}"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Backstory" HorizontalAlignment="Left" Height="237" Margin="10,327,0,0" VerticalAlignment="Top" Width="646">
-                        <TextBox VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Backstory, UpdateSourceTrigger=PropertyChanged}" />
-                    </GroupBox>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,26,0,0">
+                        <ItemsControl Name="feats">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Grid Height="100" Margin="0, 0, 0, 5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="350"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
 
+                                            <TextBox Grid.Column="1" Grid.Row="0" Height="23" Margin="10,7,10,0" Text="{Binding Title}"/>
+                                            <TextBox Grid.Column="1" Grid.Row="1" Height="23" Margin="10,7,10,0" Text="{Binding Source}"/>
+                                            <TextBox Grid.Column="1" Grid.Row="2" Height="23" Margin="10,5,10,12" Text="{Binding SourceType}"/>
+                                            <TextBox ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="10,7,10,12" Text="{Binding Definition}" Grid.Column="2" Grid.RowSpan="3"/>
+                                            <Separator Grid.ColumnSpan="4" Margin="10,16,10,-12" Grid.Row="2" />
+                                            <Label Content="SourceType" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="80" Grid.Row="2"/>
+                                            <Label Content="Source" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="80" Grid.Row="1"/>
+                                            <Label Content="Title" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="80"/>
+                                            <Button Grid.Column="3" FontFamily="Marlett"  Content="r" Width="30" Margin="10,0,26,0" Click="DeleteFeat" Grid.Row="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <Button FontFamily="Marlett" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="25" FontSize="20" Content="6" Margin="626,539,0,0" Click="AddFeat" />
                 </Grid>
             </TabItem>
             <TabItem Header="Items">
@@ -470,6 +462,52 @@
                             <TextBox x:Name="totalWeight" HorizontalAlignment="Left" Height="23" Margin="556,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" IsEnabled="False" Text="0"/>
                         </Grid>
                     </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Bio" >
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox Header="Appearance" HorizontalAlignment="Left" Height="312" Margin="10,10,0,0" VerticalAlignment="Top" Width="309">
+                        <Grid>
+                            <Label Content="Age" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Height" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Weight" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Eyes" HorizontalAlignment="Left" Margin="128,41,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Skin" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Hair" HorizontalAlignment="Left" Margin="128,72,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Representative features" HorizontalAlignment="Left" Margin="128,103,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Age, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Size" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Size, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Height, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Weight, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Skin, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Hair, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Eyes, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="145" Margin="166,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.RepresentantiveFeatures, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Content="Browse" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="113" Click="BrowseCharacterImage_Click"/>
+                            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="113">
+                                <Image x:Name="character_image"/>
+                            </Border>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Personality" HorizontalAlignment="Left" Height="312" Margin="324,10,0,0" VerticalAlignment="Top" Width="332">
+                        <Grid>
+                            <Label Content="Traits" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Ideals" HorizontalAlignment="Left" Margin="165,101,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Bonds" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Flaws" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Allies &amp; Organizations" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Traits, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Flaws, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Bonds, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Ideals, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Allies, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Backstory" HorizontalAlignment="Left" Height="237" Margin="10,327,0,0" VerticalAlignment="Top" Width="646">
+                        <TextBox VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Backstory, UpdateSourceTrigger=PropertyChanged}" />
+                    </GroupBox>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Combat">

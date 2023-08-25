@@ -26,6 +26,8 @@ namespace DndCharCreator
         public CharacterDetails details { get; set; }
 
         public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Feat> Feats { get; set; }
+
         string OldWeight = string.Empty;
 
         public CharacterInfo(string path)
@@ -52,6 +54,10 @@ namespace DndCharCreator
             Items = new ObservableCollection<Item>();
             Items.Add(new Item());
             characterItems.ItemsSource = Items;
+
+            Feats = new ObservableCollection<Feat>();
+            Feats.Add(new Feat());
+            feats.ItemsSource = Feats;
         }
 
         public string Filepath()
@@ -120,6 +126,17 @@ namespace DndCharCreator
         private void AddItem(object sender, RoutedEventArgs e)
         {
             Items.Add(new Item());
+        }
+
+        private void DeleteFeat(object sender, RoutedEventArgs e)
+        {
+            var feat = (sender as FrameworkElement).DataContext as Feat;
+            Feats.Remove(feat);
+        }
+
+        private void AddFeat(object sender, RoutedEventArgs e)
+        {
+            Feats.Add(new Feat());
         }
 
         private void WeightGotFocus(object sender, EventArgs e)
