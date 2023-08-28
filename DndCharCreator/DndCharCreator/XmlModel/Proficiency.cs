@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DndCharCreator.XmlModel
+{
+    public class Proficiency
+    {
+        public string Name { get; set; }
+        public string Type { get; set; }
+
+        public Proficiency() { }
+        public Proficiency(Model.Proficiency proficiency)
+        {
+            this.Name = proficiency.Name;
+            this.Type = proficiency.Type;
+        }
+    }
+}

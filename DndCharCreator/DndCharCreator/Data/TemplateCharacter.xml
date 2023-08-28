@@ -89,4 +89,26 @@
     <Allies></Allies>
     <Backstory></Backstory>
   </Bio>
+  <Items>
+    <Item>
+      <Name></Name>
+      <Quantity>0</Quantity>
+      <Exisis>True</Exisis>
+      <Weight>0</Weight>
+    </Item>
+  </Items>
+  <Feats>
+    <Feat>
+      <Title></Title>
+      <Definition></Definition>
+      <Source></Source>
+      <SourceType></SourceType>
+    </Feat>
+  </Feats>
+  <Proficiencies>
+    <Proficiency>
+      <Name></Name>
+      <Type></Type>
+    </Proficiency>
+  </Proficiencies>
 </CharacterDetails>
