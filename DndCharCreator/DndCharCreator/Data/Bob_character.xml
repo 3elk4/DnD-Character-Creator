@@ -89,4 +89,26 @@
     <Allies></Allies>
     <Backstory></Backstory>
   </Bio>
+  <Items>
+    <Item>
+      <Name>Test</Name>
+      <Quantity>0</Quantity>
+      <Exists>True</Exists>
+      <Weight>0</Weight>
+    </Item>
+  </Items>
+  <Feats>
+    <Feat>
+      <Title>Test</Title>
+      <Definition>Test</Definition>
+      <Source>Test</Source>
+      <SourceType>Test</SourceType>
+    </Feat>
+  </Feats>
+  <Proficiencies>
+    <Proficiency>
+      <Name>Test</Name>
+      <Type>Weapon</Type>
+    </Proficiency>
+  </Proficiencies>
 </CharacterDetails>

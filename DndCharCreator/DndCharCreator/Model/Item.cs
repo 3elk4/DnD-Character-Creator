@@ -17,5 +17,13 @@ namespace DndCharCreator.Model
         {
             this.Exists = true;
         }
+
+        public Item(XmlModel.Item item)
+        {
+            this.Exists = item.Exists;
+            this.Name = item.Name;
+            this.Quantity = item.Quantity;
+            this.Weight = item.Weight;
+        }
     }
 }

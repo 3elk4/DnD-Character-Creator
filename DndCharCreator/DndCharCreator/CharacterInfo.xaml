@@ -1,4 +1,4 @@
-﻿<Window x:Class="DndCharCreator.CharacterInfo"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DndCharCreator"
         xmlns:localconv="clr-namespace:DndCharCreator.Converter"
         xmlns:localCommand="clr-namespace:DndCharCreator.Command"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="DndCharCreator.CharacterInfo"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="CharacterInfo" Height="810" Width="700">
@@ -39,81 +40,69 @@
                             <TextBox x:Name="int_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=intelligence, Mode=OneWay}" />
                             <TextBox x:Name="wis_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=wisdom, Mode=OneWay}" />
                             <TextBox x:Name="cha_mod" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="145,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False" Text="{Binding Text, Converter={StaticResource modifierConverter}, ElementName=charisma, Mode=OneWay}" />
-                            <ComboBox Width="45" x:Name="strength" Margin="90,13,50,165" SelectedItem="{Binding Path=Info.Abilities.Strength, UpdateSourceTrigger=PropertyChanged}" />
-                            <ComboBox Width="45" x:Name="dexterity" Margin="90,44,50,134" SelectedItem="{Binding Path=Info.Abilities.Dexterity, UpdateSourceTrigger=PropertyChanged}" />
-                            <ComboBox Width="45" x:Name="constitution" Margin="90,75,50,103" SelectedItem="{Binding Path=Info.Abilities.Constitution, UpdateSourceTrigger=PropertyChanged}" />
-                            <ComboBox Width="45" x:Name="intelligence" Margin="90,106,50,72" SelectedItem="{Binding Path=Info.Abilities.Intelligence, UpdateSourceTrigger=PropertyChanged}" />
-                            <ComboBox Width="45" x:Name="wisdom" Margin="90,137,50,41" SelectedItem="{Binding Path=Info.Abilities.Wisdom, UpdateSourceTrigger=PropertyChanged}" />
-                            <ComboBox Width="45" x:Name="charisma" Margin="90,168,50,10" SelectedItem="{Binding Path=Info.Abilities.Charisma, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="strength" Margin="90,13,50,165" SelectedItem="{Binding Info.Abilities.Strength, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="dexterity" Margin="90,44,50,134" SelectedItem="{Binding Info.Abilities.Dexterity, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="constitution" Margin="90,75,50,103" SelectedItem="{Binding Info.Abilities.Constitution, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="intelligence" Margin="90,106,50,72" SelectedItem="{Binding Info.Abilities.Intelligence, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="wisdom" Margin="90,137,50,41" SelectedItem="{Binding Info.Abilities.Wisdom, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Width="45" x:Name="charisma" Margin="90,168,50,10" SelectedItem="{Binding Info.Abilities.Charisma, UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Saving throws" HorizontalAlignment="Left" Height="194" Margin="459,370,0,0" VerticalAlignment="Top" Width="197">
                         <Grid>
-                            <CheckBox x:Name="chkb_strength" Content="            Strength" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Strength, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_strength" Content="            Strength" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Strength, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="str_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_strength" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="str_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_strength" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_dexterity" Content="            Dexterity" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Dexterity, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_dexterity" Content="            Dexterity" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Dexterity, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="dex_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_dexterity" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="dex_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_dexterity" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_constitution" Content="            Constitution" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Constitution, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_constitution" Content="            Constitution" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Constitution, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="con_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_constitution" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="con_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_constitution" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_intelligence" Content="            Intelligence" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Intelligence, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_intelligence" Content="            Intelligence" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Intelligence, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="int_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_intelligence" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="int_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_intelligence" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_wisdom" Content="            Wisdom" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Wisdom, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_wisdom" Content="            Wisdom" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Wisdom, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="wis_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_wisdom" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="wis_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_wisdom" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_charisma" Content="            Charisma" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.SavingThrows.Charisma, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_charisma" Content="            Charisma" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.SavingThrows.Charisma, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" Height="20" Margin="36,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
-                                <TextBox.Text>
-                                    <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
-                                        <Binding ElementName="cha_mod" Path="Text"/>
-                                        <Binding ElementName="chkb_charisma" Path="IsChecked" />
-                                        <Binding ElementName="proficiency" Path="Text" />
-                                    </MultiBinding>
-                                </TextBox.Text>
+                                <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
+                                    <Binding ElementName="cha_mod" Path="Text"/>
+                                    <Binding ElementName="chkb_charisma" Path="IsChecked" />
+                                    <Binding ElementName="proficiency" Path="Text" />
+                                </MultiBinding>
                             </TextBox>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Skills" HorizontalAlignment="Left" Height="325" Margin="10,239,0,0" VerticalAlignment="Top" Width="444">
                         <Grid>
-                            <CheckBox x:Name="chkb_perception" Content="            Perception (Wis)" HorizontalAlignment="Left" Margin="23,29,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=Info.Skills.Perception, UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox x:Name="chkb_perception" Content="            Perception (Wis)" HorizontalAlignment="Left" Margin="23,29,0,0" VerticalAlignment="Top" IsChecked="{Binding Info.Skills.Perception, UpdateSourceTrigger=PropertyChanged}" />
                             <TextBox x:Name="skill_perc" HorizontalAlignment="Left" Height="20" Margin="49,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
@@ -121,7 +110,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_medicine" Content="            Medicine (Wis)" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Medicine, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_medicine" Content="            Medicine (Wis)" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Medicine, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_med"  HorizontalAlignment="Left" Height="20" Margin="49,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
@@ -129,7 +118,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_insight" Content="            Insight (Wis)" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Insight, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_insight" Content="            Insight (Wis)" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Insight, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_ins"  HorizontalAlignment="Left" Height="20" Margin="49,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
@@ -137,7 +126,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_deception" Content="            Deception (Cha)" HorizontalAlignment="Left" Margin="251,184,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Deception, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_deception" Content="            Deception (Cha)" HorizontalAlignment="Left" Margin="251,184,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Deception, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_dec"  HorizontalAlignment="Left" Height="20" Margin="278,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
@@ -145,7 +134,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_history" Content="            History (Int)" HorizontalAlignment="Left" Margin="251,79,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.History, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_history" Content="            History (Int)" HorizontalAlignment="Left" Margin="251,79,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.History, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_his"  HorizontalAlignment="Left" Height="20" Margin="277,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
@@ -153,7 +142,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_nature" Content="            Nature (Int)" HorizontalAlignment="Left" Margin="251,129,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Nature, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_nature" Content="            Nature (Int)" HorizontalAlignment="Left" Margin="251,129,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Nature, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_nat"  HorizontalAlignment="Left" Height="20" Margin="277,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
@@ -161,7 +150,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_persuasion" Content="            Persuasion (Cha)" HorizontalAlignment="Left" Margin="251,259,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Persuasion, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_persuasion" Content="            Persuasion (Cha)" HorizontalAlignment="Left" Margin="251,259,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Persuasion, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_pers"  HorizontalAlignment="Left" Height="20" Margin="277,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
@@ -169,7 +158,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_investigation" Content="            Investigation (Int)" HorizontalAlignment="Left" Margin="251,104,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Investigation, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_investigation" Content="            Investigation (Int)" HorizontalAlignment="Left" Margin="251,104,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Investigation, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_inv"  HorizontalAlignment="Left" Height="20" Margin="277,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
@@ -177,7 +166,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_athletics" Content="            Athletics (Str)" HorizontalAlignment="Left" Margin="23,184,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Athletics, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_athletics" Content="            Athletics (Str)" HorizontalAlignment="Left" Margin="23,184,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Athletics, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_athl"  HorizontalAlignment="Left" Height="20" Margin="49,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="str_mod" Path="Text"/>
@@ -185,7 +174,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_performance" Content="            Performance (Cha)" HorizontalAlignment="Left" Margin="251,234,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Performance, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_performance" Content="            Performance (Cha)" HorizontalAlignment="Left" Margin="251,234,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Performance, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_perform"  HorizontalAlignment="Left" Height="20" Margin="277,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
@@ -193,7 +182,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_survival" Content="            Survival (Wis)" HorizontalAlignment="Left" Margin="23,54,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Survival, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_survival" Content="            Survival (Wis)" HorizontalAlignment="Left" Margin="23,54,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Survival, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_surv"  HorizontalAlignment="Left" Height="20" Margin="49,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
@@ -201,7 +190,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_animal_handling" Content="            Animal Handling (Wis)" HorizontalAlignment="Left" Margin="23,79,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.AnimalHandling, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_animal_handling" Content="            Animal Handling (Wis)" HorizontalAlignment="Left" Margin="23,79,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.AnimalHandling, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_ani_han"  HorizontalAlignment="Left" Height="20" Margin="49,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="wis_mod" Path="Text"/>
@@ -209,7 +198,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_acrobatics" Content="            Acrobatics (Dex)" HorizontalAlignment="Left" Margin="23,209,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Acrobatics, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_acrobatics" Content="            Acrobatics (Dex)" HorizontalAlignment="Left" Margin="23,209,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Acrobatics, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_acr"  HorizontalAlignment="Left" Height="20" Margin="49,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
@@ -217,7 +206,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_religion" Content="            Religion (Int)" HorizontalAlignment="Left" Margin="251,54,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Religion, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_religion" Content="            Religion (Int)" HorizontalAlignment="Left" Margin="251,54,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Religion, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_rel"  HorizontalAlignment="Left" Height="20" Margin="277,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
@@ -225,7 +214,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_arcana" Content="            Arcana (Int)" HorizontalAlignment="Left" Margin="251,29,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Arcana, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_arcana" Content="            Arcana (Int)" HorizontalAlignment="Left" Margin="251,29,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Arcana, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_arc"  HorizontalAlignment="Left" Height="20" Margin="277,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="int_mod" Path="Text"/>
@@ -233,7 +222,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_intimidation" Content="            Intimidation (Cha)" HorizontalAlignment="Left" Margin="251,209,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Intimidation, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_intimidation" Content="            Intimidation (Cha)" HorizontalAlignment="Left" Margin="251,209,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Intimidation, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_int"  HorizontalAlignment="Left" Height="20" Margin="277,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="cha_mod" Path="Text"/>
@@ -241,7 +230,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_stealth" Content="            Stealth (Dex)" HorizontalAlignment="Left" Margin="23,234,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.Stealth, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_stealth" Content="            Stealth (Dex)" HorizontalAlignment="Left" Margin="23,234,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.Stealth, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_stel"  HorizontalAlignment="Left" Height="20" Margin="49,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
@@ -249,7 +238,7 @@
                                     <Binding ElementName="proficiency" Path="Text" />
                                 </MultiBinding>
                             </TextBox>
-                            <CheckBox x:Name="chkb_sleight_of_hand" Content="            Sleight of hand (Dex)" HorizontalAlignment="Left" Margin="23,259,0,0" VerticalAlignment="Top"  IsChecked="{Binding Path=Info.Skills.SleightOfHand, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox x:Name="chkb_sleight_of_hand" Content="            Sleight of hand (Dex)" HorizontalAlignment="Left" Margin="23,259,0,0" VerticalAlignment="Top"  IsChecked="{Binding Info.Skills.SleightOfHand, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox x:Name="skill_slohand"  HorizontalAlignment="Left" Height="20" Margin="49,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" IsEnabled="False">
                                 <MultiBinding Converter="{StaticResource bonusConverter}" Mode="OneWay">
                                     <Binding ElementName="dex_mod" Path="Text"/>
@@ -280,12 +269,12 @@
                             <Label Content="Proficiency" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Passive Perception" HorizontalAlignment="Left" Margin="123,69,0,0" VerticalAlignment="Top"/>
                             <Label Content="Hit dice" HorizontalAlignment="Left" Margin="257,128,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="armor_class" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.AC, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="armor_class" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.AC, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="123,159,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=dex_mod, Mode=OneWay}" VerticalAlignment="Top" Width="73" IsEnabled="False"/>
-                            <TextBox x:Name="speed" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Path=Info.Speed, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox x:Name="current_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.CurrentHP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox x:Name="temp_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.TempHP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox x:Name="hit_dice" HorizontalAlignment="Left" Height="23" Margin="257,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Path=Info.HitDice, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="speed" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="257,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Info.Speed, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="current_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.CurrentHP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="temp_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.TempHP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="hit_dice" HorizontalAlignment="Left" Height="23" Margin="257,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Info.HitDice, UpdateSourceTrigger=PropertyChanged}"/>
                             <Separator HorizontalAlignment="Left" Height="84" Margin="150,58,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
                                 <Separator.RenderTransform>
                                     <TransformGroup>
@@ -296,8 +285,7 @@
                                     </TransformGroup>
                                 </Separator.RenderTransform>
                             </Separator>
-                            <TextBox HorizontalAlignment="Left"  Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}">
-                            </TextBox>
+                            <TextBox HorizontalAlignment="Left"  Height="23" Margin="123,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False" Text="{Binding Text, Converter={StaticResource passiveWisdomConverter}, ElementName=skill_perc, Mode=OneWay}"/>
                             <TextBox x:Name="proficiency"  HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Text, Converter={StaticResource proficiencyConverter}, ElementName=lvl, Mode=OneWay}" IsEnabled="False"/>
                             <Separator HorizontalAlignment="Left" Height="84" Margin="18,59,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5">
                                 <Separator.RenderTransform>
@@ -310,33 +298,33 @@
                                 </Separator.RenderTransform>
                             </Separator>
                             <Label Content="Race" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="race" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Path=Info.Race, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="race" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Text="{Binding Info.Race, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Background" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="background" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.Background, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="background" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.Background, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Alignment" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="alignment" HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.Alignment, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="alignment" HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.Alignment, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Max HP" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="349,10,0,0"/>
-                            <TextBox x:Name="max_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Path=Info.HP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="max_hp" HorizontalAlignment="Left" PreviewTextInput="NumberValidation" Height="23" Margin="349,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"  Text="{Binding Info.HP, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Classes" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="197" Margin="459,10,0,0">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,20">
                             <Grid Width="180" Height="230">
-                                <TextBox x:Name="class1" Height="23" Width="100" Margin="10,10,70,197" Text="{Binding Path=Info.DndClasses[0].Name, UpdateSourceTrigger=PropertyChanged}" />
-                                <TextBox x:Name="subclass1" Height="23" Width="110" Margin="40,38,30,169" Text="{Binding Path=Info.DndClasses[0].Subname, UpdateSourceTrigger=PropertyChanged}" />
-                                <ComboBox Width="45" x:Name="lvl1" Margin="115,10,20,197" SelectedItem="{Binding Path=Info.DndClasses[0].Lvl, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox x:Name="class1" Height="23" Width="100" Margin="10,10,70,197" Text="{Binding Info.DndClasses[0].Name, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox x:Name="subclass1" Height="23" Width="110" Margin="40,38,30,169" Text="{Binding Info.DndClasses[0].Subname, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Width="45" x:Name="lvl1" Margin="115,10,20,197" SelectedItem="{Binding Info.DndClasses[0].Lvl, UpdateSourceTrigger=PropertyChanged}" />
                                 <Label Content="Sub" Margin="10,38,139,169" Height="23"/>
-                                <TextBox Height="23" Width="100" Margin="10,66,70,141" Text="{Binding Path=Info.DndClasses[1].Name, UpdateSourceTrigger=PropertyChanged}" />
-                                <TextBox Height="23" Width="110" Margin="40,94,30,113" Text="{Binding Path=Info.DndClasses[1].Subname, UpdateSourceTrigger=PropertyChanged}" />
-                                <ComboBox Width="45" x:Name="lvl2" Margin="115,66,20,141" SelectedItem="{Binding Path=Info.DndClasses[1].Lvl, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="100" Margin="10,66,70,141" Text="{Binding Info.DndClasses[1].Name, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="110" Margin="40,94,30,113" Text="{Binding Info.DndClasses[1].Subname, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Width="45" x:Name="lvl2" Margin="115,66,20,141" SelectedItem="{Binding Info.DndClasses[1].Lvl, UpdateSourceTrigger=PropertyChanged}" />
                                 <Label Content="Sub" Margin="10,94,139,113" Height="23"/>
-                                <TextBox Height="23" Width="100" Margin="10,122,70,85" Text="{Binding Path=Info.DndClasses[2].Name, UpdateSourceTrigger=PropertyChanged}" />
-                                <TextBox Height="23" Width="110" Margin="40,150,30,57" Text="{Binding Path=Info.DndClasses[2].Subname, UpdateSourceTrigger=PropertyChanged}" />
-                                <ComboBox Width="45" x:Name="lvl3" Margin="115,122,20,85" SelectedItem="{Binding Path=Info.DndClasses[2].Lvl, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="100" Margin="10,122,70,85" Text="{Binding Info.DndClasses[2].Name, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="110" Margin="40,150,30,57" Text="{Binding Info.DndClasses[2].Subname, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Width="45" x:Name="lvl3" Margin="115,122,20,85" SelectedItem="{Binding Info.DndClasses[2].Lvl, UpdateSourceTrigger=PropertyChanged}" />
                                 <Label Content="Sub" Margin="10,150,139,57" Height="23"/>
-                                <TextBox Height="23" Width="100" Margin="10,178,70,29" Text="{Binding Path=Info.DndClasses[3].Name, UpdateSourceTrigger=PropertyChanged}" />
-                                <TextBox Height="23" Width="110" Margin="40,206,30,1" Text="{Binding Path=Info.DndClasses[3].Subname, UpdateSourceTrigger=PropertyChanged}" />
-                                <ComboBox Width="45" x:Name="lvl4" Margin="115,178,20,29" SelectedItem="{Binding Path=Info.DndClasses[3].Lvl, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="100" Margin="10,178,70,29" Text="{Binding Info.DndClasses[3].Name, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Height="23" Width="110" Margin="40,206,30,1" Text="{Binding Info.DndClasses[3].Subname, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Width="45" x:Name="lvl4" Margin="115,178,20,29" SelectedItem="{Binding Info.DndClasses[3].Lvl, UpdateSourceTrigger=PropertyChanged}" />
                                 <Label Content="Sub" Margin="10,206,139,1" Height="23"/>
                             </Grid>
                         </ScrollViewer>
@@ -346,7 +334,7 @@
             <TabItem Header="Feats">
                 <Grid Background="#FFE5E5E5">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <ItemsControl Name="feats">
+                        <ItemsControl x:Name="feats">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -384,7 +372,7 @@
             <TabItem Header="Proficiencies">
                 <Grid Background="#FFE5E5E5">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,33,0,0">
-                        <ItemsControl Name="proficiencies">
+                        <ItemsControl x:Name="proficiencies">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -400,13 +388,7 @@
 
                                             <TextBox Grid.Column="1" Height="23" Width="300" Margin="10,0,10,7" Text="{Binding Name}"/>
                                             <Button Grid.Column="2" FontFamily="Marlett"  Content="r" Width="23" Height="23" Margin="10,0,189,7" Click="DeleteProficiency"/>
-                                            <ComboBox Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="202" SelectedValue="{Binding Type}" >
-                                                <ComboBoxItem Content="Armor"/>
-                                                <ComboBoxItem Content="Weapon"/>
-                                                <ComboBoxItem Content="Language"/>
-                                                <ComboBoxItem Content="Tool"/>
-                                                <ComboBoxItem Content="Other"/>
-                                            </ComboBox>
+                                            <ComboBox Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="202" SelectedItem="{Binding Type}" ItemsSource="{Binding ProficiencyTypes}" />
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>
@@ -462,7 +444,7 @@
                                 <Label Grid.Column="3" Content="Weight" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                             </Grid>
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,36,0,40">
-                                <ItemsControl Name="characterItems">
+                                <ItemsControl x:Name="characterItems">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -512,15 +494,15 @@
                             <Label Content="Skin" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Hair" HorizontalAlignment="Left" Margin="128,72,0,0" VerticalAlignment="Top"/>
                             <Label Content="Representative features" HorizontalAlignment="Left" Margin="128,103,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Age, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Bio.Age, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Size" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Size, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Height, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Path=Bio.Weight, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Skin, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Hair, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Bio.Eyes, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="145" Margin="166,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.RepresentantiveFeatures, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Bio.Size, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Bio.Height, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="63,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Text="{Binding Bio.Weight, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Bio.Skin, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Bio.Hair, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="166,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Bio.Eyes, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="145" Margin="166,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.RepresentantiveFeatures, UpdateSourceTrigger=PropertyChanged}"/>
                             <Button Content="Browse" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="113" Click="BrowseCharacterImage_Click"/>
                             <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="113">
                                 <Image x:Name="character_image"/>
@@ -534,15 +516,15 @@
                             <Label Content="Bonds" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
                             <Label Content="Flaws" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Allies &amp; Organizations" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Traits, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Flaws, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Bonds, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Ideals, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Allies, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Traits, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Flaws, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Bonds, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="165,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Ideals, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox HorizontalAlignment="Left" Height="60" Margin="10,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Allies, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Backstory" HorizontalAlignment="Left" Height="237" Margin="10,327,0,0" VerticalAlignment="Top" Width="646">
-                        <TextBox VerticalScrollBarVisibility="Visible" Text="{Binding Path=Bio.Backstory, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox VerticalScrollBarVisibility="Visible" Text="{Binding Bio.Backstory, UpdateSourceTrigger=PropertyChanged}" />
                     </GroupBox>
 
                 </Grid>
@@ -555,20 +537,18 @@
         <Grid HorizontalAlignment="Left" Height="75" Margin="10,40,0,0" VerticalAlignment="Top" Width="672">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="75" Stroke="Black" VerticalAlignment="Top" Width="672" StrokeThickness="0.2"/>
             <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="charName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="charName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Level" HorizontalAlignment="Left" Margin="589,10,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="lvl" PreviewTextInput="NumberValidation" HorizontalAlignment="Left" Height="23" Margin="589,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" IsEnabled="False">
-                <TextBox.Text>
-                    <MultiBinding Converter="{StaticResource lvlConverter}">
-                        <Binding Path="Text" ElementName="lvl1" Mode="OneWay" />
-                        <Binding Path="Text" ElementName="lvl2" Mode="OneWay" />
-                        <Binding Path="Text" ElementName="lvl3" Mode="OneWay" />
-                        <Binding Path="Text" ElementName="lvl4" Mode="OneWay" />
-                    </MultiBinding>
-                </TextBox.Text>
+                <MultiBinding Converter="{StaticResource lvlConverter}">
+                    <Binding Path="Text" ElementName="lvl1" Mode="OneWay" />
+                    <Binding Path="Text" ElementName="lvl2" Mode="OneWay" />
+                    <Binding Path="Text" ElementName="lvl3" Mode="OneWay" />
+                    <Binding Path="Text" ElementName="lvl4" Mode="OneWay" />
+                </MultiBinding>
             </TextBox>
             <Label Content="Inspiration" HorizontalAlignment="Left" Margin="505,10,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="insp" Content="" HorizontalAlignment="Left" Margin="550,45,0,0" VerticalAlignment="Top" Height="15" Width="18" RenderTransformOrigin="0.5,0.5"  IsChecked="{Binding Path=Info.Inspiration, UpdateSourceTrigger=PropertyChanged}">
+            <CheckBox x:Name="insp" Content="" HorizontalAlignment="Left" Margin="550,45,0,0" VerticalAlignment="Top" Height="15" Width="18" RenderTransformOrigin="0.5,0.5"  IsChecked="{Binding Info.Inspiration, UpdateSourceTrigger=PropertyChanged}">
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -579,7 +559,7 @@
         </Grid>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="25" Margin="10,729,0,0" Content="Save to file" Click="SaveDetails">
             <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger RoutedEvent="ButtonBase.Click">
                     <BeginStoryboard>
                         <Storyboard>
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="saveErrorTextBlock" Storyboard.TargetProperty="Visibility">
@@ -590,7 +570,6 @@
                 </EventTrigger>
             </Button.Triggers>
         </Button>
-        <TextBlock x:Name="saveErrorTextBlock" HorizontalAlignment="Left" Margin="115,733,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False">
-        </TextBlock>
+        <TextBlock x:Name="saveErrorTextBlock" HorizontalAlignment="Left" Margin="115,733,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False"/>
     </Grid>
 </Window>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DndCharCreator.Model
+namespace DndCharCreator.XmlModel
 {
     public class Feat
     {
@@ -14,12 +14,12 @@ namespace DndCharCreator.Model
         public string Definition { get; set; }
 
         public Feat() { }
-        public Feat(XmlModel.Feat feat)
+        public Feat(Model.Feat feat)
         {
             this.Title = feat.Title;
+            this.Definition = feat.Definition;
             this.Source = feat.Source;
             this.SourceType = feat.SourceType;
-            this.Definition = feat.Definition;
         }
     }
 }
