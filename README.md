@@ -18,5 +18,5 @@ It is possible to change info and add new items/proficiensies/feats to character
 - spell info section
 - dnd classes section
 - possibility to add also npcs
-- ui deisgn
+- ui design
 
